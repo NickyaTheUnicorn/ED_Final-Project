@@ -60,7 +60,7 @@ userSchema.pre('save', function encryptPassword(next) {
 
 //#region User methods
 
-userSchema.methods.compatePassword = function comparePassword(password) {
+userSchema.methods.comparePassword = function comparePassword(password) {
     return bcrypt.compareSync(password, this.password);
 }
 
