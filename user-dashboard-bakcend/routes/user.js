@@ -11,6 +11,8 @@ const userController = require('../controllers/user');
 
 const passport = require('passport');
 require('../features/jwt')(passport);
+router.use(passport.initialize());
+
 
 //#endregion
 
@@ -19,3 +21,5 @@ require('../features/jwt')(passport);
 router.get('/:id', passport.authenticate('jwt', {session: false}), userController.getUserInformations);
 
 //#endregion
+
+module.exports = router

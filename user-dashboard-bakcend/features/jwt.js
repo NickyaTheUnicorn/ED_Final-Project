@@ -1,7 +1,7 @@
 //#region Basic Requirements
 
-const JWTStrategy = require('passport-jwt').Strategy;
-const ExtractJWT = require('passport-jwt').ExtractJWT;
+const JwtStrategy = require('passport-jwt').Strategy,
+    ExtractJwt = require('passport-jwt').ExtractJwt;
 
 const User = require('../models/user');
 
@@ -10,7 +10,7 @@ const User = require('../models/user');
 //#region JWT Options Configuration
 
 const opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderasBearerToken(),
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.JWT_SECRET,
 };
 
@@ -20,7 +20,7 @@ const opts = {
 
 module.exports = passport => {
     passport.use(
-        new JWTStrategy(opts, (jwt_payload, done) => {
+        new JwtStrategy(opts, (jwt_payload, done) => {
             User.findById(jwt_payload.id)
                 .then(user => {
                     // Check User in promise

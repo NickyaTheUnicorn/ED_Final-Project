@@ -6,7 +6,7 @@ const router = require('express').Router();
 // Check is used for backend validation
 const { check } = require('express-validator');
 
-const Authenitication = require('../features/authenitication');
+const Authenitication = require('../controllers/authentication');
 
 //#endregion
 

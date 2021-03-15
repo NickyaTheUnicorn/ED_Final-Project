@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
         
         // Check if the inserted email is already in use
         const returnedUser = await User.findOne({ email });
-        if (user) {
+        if (returnedUser) {
             return res.status(401).json({message: `The email address ${email} is already associeted with another account. Please use another email address or Login`});
         }
 
