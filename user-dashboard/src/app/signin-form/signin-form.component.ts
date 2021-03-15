@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth-service.service';
 
 @Component({
   selector: 'app-signin-form',
@@ -10,7 +12,7 @@ export class SigninFormComponent implements OnInit {
 
   loginForm: FormGroup ;
 
-  constructor() {
+  constructor(private authService: AuthServiceService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [
       Validators.required,
@@ -24,9 +26,20 @@ export class SigninFormComponent implements OnInit {
   });
   }
 
-  submit(login: any): void{
-    console.log(login);
+  submit(): void{
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value).subscribe(result => {
+        if (result) {
+          localStorage.setItem('token', result);
+          this.router.navigate(['dashboard']);
+        } else {
+          console.error(result);
+        }
+      });
+    }
   }
+
+  //#region From Validators
 
   shouldBePasswordRequired(): boolean {
     const password = this.loginForm.controls.password;
@@ -52,6 +65,8 @@ export class SigninFormComponent implements OnInit {
     const email = this.loginForm.controls.email;
     return email.touched && email.hasError('email');
   }
+
+  //#endregion
 
   ngOnInit(): void { }
 

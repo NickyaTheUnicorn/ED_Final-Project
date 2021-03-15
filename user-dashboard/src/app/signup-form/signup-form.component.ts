@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth-service.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -10,7 +12,7 @@ export class SignupFormComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthServiceService, private router: Router) {
     this.registerForm = new FormGroup({
       firstName: new FormControl(null, [
         Validators.required,
@@ -35,6 +37,8 @@ export class SignupFormComponent implements OnInit {
       ]),
     });
   }
+
+  //#region  Form Validators
 
   shouldBeRequiredFirstName(): boolean {
     const firstName = this.registerForm.controls.firstName;
@@ -87,8 +91,18 @@ export class SignupFormComponent implements OnInit {
     return confirmPassword.touched && password.value !== confirmPassword.value;
   }
 
-  submit(register: any): void {
-    console.log(register);
+  //#endregion
+
+  submit(): void {
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).subscribe(result => {
+        if (result) {
+          this.router.navigate(['login']);
+        } else {
+          console.error(result);
+        }
+      });
+    }
   }
 
   ngOnInit(): void {

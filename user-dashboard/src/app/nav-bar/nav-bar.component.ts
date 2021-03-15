@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth-service.service';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,10 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   isCollapsed = false;
-  
-  constructor() { }
 
-  ngOnInit(): void {
+  locAuthService: any;
+
+  constructor(private authService: AuthServiceService, private router: Router) {
+    this.locAuthService = authService;
+  }
+
+  ngOnInit(): void {  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

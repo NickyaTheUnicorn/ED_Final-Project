@@ -3,7 +3,7 @@
         <h1 class="col-md-7">Registration</h1>
     </div>
     <div class="row">
-        <form #register="ngForm" (ngSubmit)="submit(register)" [formGroup]="registerForm">
+        <form #register="ngForm" (ngSubmit)="submit()" [formGroup]="registerForm">
             <div class="form-group">
                 <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"/>
                 <div class="error-message" *ngIf="shouldBeRequiredFirstName()">

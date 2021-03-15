@@ -8,10 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarCollapsed" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+              <a href="#" class="nav-link" routerLink="/register" routerLinkActive="active" *ngIf="!locAuthService.isLoggedIn()">Register</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+              <a href="#" class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!locAuthService.isLoggedIn()">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" routerLink="/dashboard" routerLinkActive="active" *ngIf="locAuthService.isLoggedIn()">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <button class="outline-button" type="button" (click)="logout()" *ngIf="locAuthService.isLoggedIn()">Logout</button>
             </li>
         </ul>
     </div>

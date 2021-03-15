@@ -18,7 +18,7 @@ router.use(passport.initialize());
 
 //#region Routes
 
-router.get('/:id', passport.authenticate('jwt', {session: false}), userController.getUserInformations);
+router.get('/', passport.authenticate('jwt', {session: false}), userController.getUserInformations);
 
 //#endregion
 

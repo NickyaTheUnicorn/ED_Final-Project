@@ -2,7 +2,7 @@
     <div class="row">
         <h1 class="col-md-7">Login</h1>
     </div>
-    <form #login="ngForm" (ngSubmit)="submit(login)" [formGroup]="loginForm">
+    <form #login="ngForm" (ngSubmit)="submit()" [formGroup]="loginForm">
         <div class="form-group">
             <input id="email" type="email" placeholder="Email" name="email" class="form-control" formControlName="email" />
             <div class="error-message" *ngIf="shouldBeEmailRequired()">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInterface } from '../user-interface';
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,19 +9,25 @@ import { UserInterface } from '../user-interface';
 })
 export class DashboardComponent implements OnInit {
 
-  user: UserInterface;
+  user: UserInterface = {};
 
-  constructor() {
-    this.user = {
-      firstName: 'Yannick',
-      lastName: 'Renner',
-      username: 'rennery',
-      email: 'yannick@email.com',
-      password: '123456'
-    };
-  }
+  constructor(private userService: UserServiceService) { }
 
   ngOnInit(): void {
+    this.getUserData();
+  }
+
+  getUserData(): void {
+    this.userService.fetchData().subscribe(result => {
+      this.fetchUserData(result);
+    });
+  }
+
+  private fetchUserData(result: any): void {
+    this.user.email = result.email;
+    this.user.firstName = result.firstName;
+    this.user.lastName = result.lastName;
+    this.user.username = result.username;
   }
 
 }
