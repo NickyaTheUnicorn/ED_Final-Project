@@ -9,3 +9,15 @@
     border-radius: 10%;
     color: var(--secondaryBgLight);
 }
+
+.error-message {
+    margin-top: 1%;
+    background-color: var(--error-red-backgorund);
+    border: 1px solid var(--error-red-border);
+    border-radius: 3%;
+    color: var(--error-red-text);
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
