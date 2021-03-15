@@ -1,0 +1,42 @@
+.container {
+    width: 95%;
+}
+.odd-element {
+    border-bottom: 0.1em solid grey;    
+    background-color: var(--table-odd);
+}
+
+.even-element {
+    border-bottom: 0.1em solid grey;    
+    background-color: var(--table-even);
+}
+
+.label {
+    border-right: 0.1em solid grey;
+    color: var(--primaryBgLight)
+}
+
+.info-container {
+    border-radius: 0.5em;
+    border: 0.2em solid grey;
+    
+}
+
+.label.first-element {
+    border-top-left-radius: 0.2em;
+}
+.element.first-element {
+    border-top-right-radius: 0.2em;
+}
+
+.label.last-element {
+    border-bottom-left-radius: 0.2em;
+}
+
+.element.last-element {
+    border-bottom-right-radius: 0.2em;
+}
+
+.last-element {
+    border-bottom: 0px;
+}
