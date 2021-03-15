@@ -1,0 +1,8 @@
+.dark {
+  background-color: var(--primaryBgBase); 
+}
+
+
+.light {
+    background-color: var(--secondaryBgBase);
+}

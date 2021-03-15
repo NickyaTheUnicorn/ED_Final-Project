@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <h1 class="col-md-7">Login</h1>
+    </div>
+    <form #login="ngForm" (ngSubmit)="submit(login)" [formGroup]="loginForm">
+        <div class="form-group">
+            <input id="email" type="email" placeholder="Email" name="email" class="form-control" formControlName="email" />
+            <div class="error-message" *ngIf="shouldBeEmailRequired()">
+                Email Address required
+            </div>
+            <div class="error-message" *ngIf="shouldHaveCorrectEmail()">
+                Email Address not valid
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Password" class="form-control" formControlName="password" />
+            <div class="error-message" *ngIf="shouldBePasswordRequired()">
+                Password is required
+            </div>
+            <div class="error-message" *ngIf="shouldHavePasswordMinLength()">
+                Password is too short
+            </div>
+            <div class="error-message" *ngIf="shouldNotHavePasswordMaxLength()">
+                Password is too long
+            </div>
+        </div>
+        <button type="submit" class="btn primary-button">Submit</button>
+        <a href="#" routerLink="/register" routerLinkActive="active">
+            <button class="btn outline-button">Register</button>
+        </a>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <h1 class="col-md-7">Registration</h1>
+    </div>
+    <div class="row">
+        <form #register="ngForm" (ngSubmit)="submit(register)">
+            <div class="form-group">
+                <input type="text" placeholder="First Name" class="form-control" ngModel/>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Last Name" class="form-control" ngModel/>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Email" class="form-control" ngModel/>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Username" class="form-control" ngModel/>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" class="form-control" ngModel/>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Confirm Password" class="form-control" ngModel/>
+            </div>
+            <button class="btn primary-button" type="submit">Submit</button>
+            <a href="#" routerLink="/login" routerLinkActive="active">
+                <button class="btn outline-button">Login</button>
+            </a>
+        </form>
+    </div>
+</div>

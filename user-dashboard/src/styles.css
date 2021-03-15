@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --primaryBgBase: #445963;
+    --primaryBgLight: #445963;
+    --primaryBgDark: #1B3039;    
+    --primaryText: #FFFFFF;
+    --secondaryBgBase: #FF4081;
+    --secondaryBgLight: #FF79B0;
+    --secondaryBgDark: #C60055;
+    --secondaryText: #000000;
+
+    --error-red-backgorund: #FFCDD2;
+    --error-red-border: #FF5252;
+    --error-red-text: #D32F2F;
+}
