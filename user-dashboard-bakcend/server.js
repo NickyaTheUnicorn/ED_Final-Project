@@ -9,8 +9,8 @@ const cors = require('cors');
 
 //#region Mongo connection
 
-const { MONGO_DB_KEY } = process.env;
-const MongoURI = '';
+const {MONGO_DB_USER, MONGO_DB_KEY, MONGO_DB_DB } = process.env;
+const MongoURI = `mongodb+srv://${MONGO_DB_USER}:${MONGO_DB_KEY}@meanfullstackcours.vwemt.mongodb.net/${MONGO_DB_DB}?retryWrites=true&w=majority`
 mongoose.connect( MongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -51,7 +51,11 @@ app.use(cors(corsOptions));
 
 //#region Routes
 
-app.use(require('./routes'));
+const authRoutes = require('./routes/authentication');
+const userRoutes = require('./routes/user');
+
+app.use('/', authRoutes);
+app.use('/users', userRoutes);
 
 //#endregion
 

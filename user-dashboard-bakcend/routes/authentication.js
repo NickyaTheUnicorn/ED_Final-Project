@@ -10,14 +10,6 @@ const Authenitication = require('../features/authenitication');
 
 //#endregion
 
-//#region Middleware configuration
-
-// The middleware is specific to this router
-const passport = require('passport');
-require('../features/jwt')(passport);
-
-//#endregion
-
 //#region Routes
 
 router.post('/signup', [
